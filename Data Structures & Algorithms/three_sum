@@ -1,0 +1,25 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums = nums.sort()
+        l = 0
+        r = len(nums)-1
+        arr = []
+
+        # make sure new l and r pointers are different from previous ones
+        while l < r:
+            for mid in range(l, r):
+                if nums[l] + nums[mid] + nums[r] == 0: 
+                    arr.append([nums[l], nums[mid], nums[r]])
+                    l += 1
+                    r -= 1
+                    break
+                elif nums[l] + nums[mid] + nums[r] > 0: # no point in traversing if combo fails
+                    r -= 1
+                    break
+                elif mid+1 == right and nums[l] + nums[mid] + nums[r] < 0: # the largest value of mid makes the combo less than 0 
+                    l -= 1
+                    break
+                
+                
+                
+                
